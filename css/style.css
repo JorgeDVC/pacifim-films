@@ -160,8 +160,7 @@ h1, h2, h3, h4 {
   height: 1px;
   background: var(--gold);
   display: inline-block;
-  align-self: center;      /* Asegura que la raya se centre verticalmente */
-  margin-top:0; 
+
 }
 
 .gold-text {
@@ -1035,22 +1034,41 @@ section {
   .brand-text span { display: none; }
   .brand img { height: 48px; width: 48px; }
   .brand-text strong { font-size: 1rem; }
-  .eyebrow::before {
+  .eyebrow-first::before {
     margin-top: -18px;   
   }
 
   body.nav-open .main-nav {
     display: flex;
     position: fixed;
-    inset: 0;
     top: 0;
-    background: rgba(8,7,10,0.98);
+    left: 0;
+    width: 100vw;    /* Ocupa todo el ancho de la pantalla */
+    height: 100%;   /* Ocupa todo el alto de la pantalla */
+    background: #08070a; /* NEGRO PURO, SIN TRANSPARENCIA */
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    z-index: 95;
+    z-index: 96;   /* MUY POR ENCIMA de todo */
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    /* Elimina cualquier efecto que pueda venir del header */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
+
+  /* Cuando el menú está abierto, el header también se vuelve negro y sin blur */
+  body.nav-open .site-header {
+    background: #08070a !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom-color: transparent !important;
+  }
+
+
   body.nav-open .main-nav a { font-size: var(--fs-lg); font-family: var(--font-display); }
 
   .about-stats { grid-template-columns: 1fr; gap: 1.4rem; text-align: left; }
